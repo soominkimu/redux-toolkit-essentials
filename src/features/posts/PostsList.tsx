@@ -1,11 +1,20 @@
+/*=============================================================================
+ PostsList.tsx - Posts List
+
+ by Soomin K.
+ (C) 2020 SPACETIMEQ INC.
+=============================================================================*/
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { selectAllPosts } from './postsSlice';
+import { PostAuthor }      from './PostAuthor';
+import { TimeAgo }         from './TimeAgo';
+import { ReactionButtons } from './ReactionButtons';
 
-import { PostAuthor } from './PostAuthor';
-import { TimeAgo }    from './TimeAgo';
+import {
+  selectAllPosts
+} from './postsSlice';
 
 export const PostsList = () => {
   const posts = useSelector(selectAllPosts);
@@ -20,6 +29,7 @@ export const PostsList = () => {
         <TimeAgo timestamp={post.date} />
       </div>
       <p className="post-content">{post.content.substring(0, 100)}</p>
+      <ReactionButtons post={post} />
       <Link to={`/posts/${post.id}`} className="button muted-button">
         View Post
       </Link>

@@ -1,7 +1,13 @@
+/*=============================================================================
+ usersSlice.ts - users State Slice
+
+ by Soomin K.
+ (C) 2020 SPACETIMEQ INC.
+=============================================================================*/
 import {
   createSlice
 } from '@reduxjs/toolkit';
-import { TRootState } from '../../types';
+import { TRootState } from '../../types.d';
 
 type TUserState = {
   id:   string;

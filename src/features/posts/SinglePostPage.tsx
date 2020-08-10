@@ -1,3 +1,9 @@
+/*=============================================================================
+ SinglePostPage.tsx - Single Post Page
+
+ by Soomin K.
+ (C) 2020 SPACETIMEQ INC.
+=============================================================================*/
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -7,6 +13,7 @@ import { TMatch, TRootState } from '../../types';
 
 import { PostAuthor } from './PostAuthor';
 import { TimeAgo }    from './TimeAgo';
+import { ReactionButtons } from './ReactionButtons';
 
 export const SinglePostPage = ({ match }: TMatch) => {
   const { postId } = match.params;
@@ -30,6 +37,7 @@ export const SinglePostPage = ({ match }: TMatch) => {
           <TimeAgo timestamp={post.date} />
         </div>
         <p className="post-content">{post.content}</p>
+        <ReactionButtons post={post} />
         <Link to={`/editPost/${post.id}`} className="button">
           Edit Post
         </Link>

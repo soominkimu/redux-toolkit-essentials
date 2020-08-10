@@ -1,3 +1,9 @@
+/*=============================================================================
+ TimeAgo.tsx - Time Ago
+
+ by Soomin K.
+ (C) 2020 SPACETIMEQ INC.
+=============================================================================*/
 import React from 'react';
 import { parseISO, formatDistanceToNow } from 'date-fns';
 

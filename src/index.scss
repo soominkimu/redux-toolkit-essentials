@@ -1,3 +1,9 @@
+/*=============================================================================
+ index.scss - SASS
+
+ by Soomin K.
+ (C) 2020 SPACETIMEQ INC.
+=============================================================================*/
 :root {
   --redux-color: #764abc;
 }
@@ -151,6 +157,8 @@ button.reaction-button {
   margin: 5px 6px 10px;
   border-radius: 4px;
   white-space: nowrap;
+  font-weight: 600;
+  color: darkred;
 }
 
 /* https://projects.lukehaas.me/css-loaders/ , Loader #3 */

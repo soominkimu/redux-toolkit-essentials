@@ -1,21 +1,29 @@
+/*=============================================================================
+ postsSlice.ts - posts State Slice
+
+ by Soomin K.
+ (C) 2020 SPACETIMEQ INC.
+=============================================================================*/
 import {
   createSlice,
   nanoid,
   PayloadAction
 } from '@reduxjs/toolkit';
-import { TRootState } from '../../types';
-
-type TPostState = {
-  id:      string;  // nanoid(), 21 symbols "V1StGXR8_Z5jdHi6B-myT"
-  date:    string;
-  title:   string;
-  content: string;
-  user:    string;
-};
+import {
+  TPostState,
+  TRootState,
+  TReaction,
+} from '../../types.d';
 
 const initialState: TPostState[] = [
-  { id: '1', date: '2020-08-01T15:16:33.188Z', title: 'First Post!', content: 'Hello!',    user: '0' },
-  { id: '2', date: '2020-08-01T17:16:33.188Z', title: 'Second Post', content: 'More text', user: '1' }
+  { id: '1', date: '2020-08-01T15:16:33.188Z', title: 'First Post!',
+    content: 'Hello!',    user: '0',
+    reactions: {thumbsUp: 0, hooray: 0, heart: 0, rocket: 0, eyes: 0}
+  },
+  { id: '2', date: '2020-08-01T17:16:33.188Z', title: 'Second Post',
+    content: 'More text', user: '1' ,
+    reactions: {thumbsUp: 0, hooray: 0, heart: 0, rocket: 0, eyes: 0}
+  }
 ];
 
 const postsSlice = createSlice({
@@ -36,7 +44,8 @@ const postsSlice = createSlice({
             date: new Date().toISOString(),
             title,
             content,
-            user: userId
+            user: userId,
+            reactions: {thumbsUp: 0, hooray: 0, heart: 0, rocket: 0, eyes: 0}
           }
         };
       }
@@ -48,6 +57,13 @@ const postsSlice = createSlice({
         existingPost.title   = title;
         existingPost.content = content;
       }
+    },
+    reactionAdded(state, action) {
+      const { postId, reaction } = action.payload;
+      const existingPost = state.find(post => post.id === postId);
+      if (existingPost) {
+        existingPost.reactions[reaction as TReaction]++;
+      }
     }
   }
 });
@@ -56,7 +72,8 @@ export default postsSlice.reducer;
 
 export const {
   postAdded,
-  postUpdated
+  postUpdated,
+  reactionAdded
 } = postsSlice.actions;
 
 export const selectAllPosts = (state: TRootState) => state.posts;
