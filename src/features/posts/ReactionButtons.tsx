@@ -30,6 +30,7 @@ type Props = {
 export const ReactionButtons = ({ post }: Props) => {
   const dispatch = useDispatch();
 
+  // Object to Array
   const reactionButtons = Object.entries(reactionEmoji).map(([name, emoji]) =>
     <button
       key={name}

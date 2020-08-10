@@ -6,15 +6,15 @@
 =============================================================================*/
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { RouteComponentProps, useHistory } from 'react-router-dom';
 
 import {
   postUpdated,
   selectPostById
 } from './postsSlice';
-import { TMatch, TRootState } from '../../types';
+import { TRootState } from '../../types.d';
 
-export const EditPostForm = ({ match }: TMatch) => {
+export const EditPostForm = ({ match }: RouteComponentProps<{ postId: string }>) => {
   const { postId } = match.params;
 
   const post = useSelector((state: TRootState) => selectPostById(state, postId));

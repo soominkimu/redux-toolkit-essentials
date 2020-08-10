@@ -6,16 +6,16 @@
 =============================================================================*/
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 
 import { selectPostById } from './postsSlice';
-import { TMatch, TRootState } from '../../types';
+import { TRootState } from '../../types.d';
 
 import { PostAuthor } from './PostAuthor';
 import { TimeAgo }    from './TimeAgo';
 import { ReactionButtons } from './ReactionButtons';
 
-export const SinglePostPage = ({ match }: TMatch) => {
+export const SinglePostPage = ({ match }: RouteComponentProps<{ postId: string }>) => {
   const { postId } = match.params;
 
   const post = useSelector((state: TRootState) => selectPostById(state, postId));

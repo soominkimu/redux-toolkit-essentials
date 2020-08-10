@@ -79,3 +79,4 @@ export const {
 export const selectAllPosts = (state: TRootState) => state.posts;
 export const selectPostById = (state: TRootState, postId: string) =>
     state.posts.find(post => post.id === postId);
+
