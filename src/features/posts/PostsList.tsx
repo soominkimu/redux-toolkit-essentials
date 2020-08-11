@@ -16,7 +16,7 @@ import { ReactionButtons } from './ReactionButtons';
 import { TRootState, TPost } from '../../types.d';
 
 import {
-  selectAllPosts,
+  selectPostIds,
   selectPostById,
   selectPostStatus,
   selectPostError,
@@ -24,7 +24,7 @@ import {
   fetchPosts
 } from './postsSlice';
 
-const PostExcerpt = ({ postId }: { postId: string }) => {
+const PostExcerpt = ({ postId }: { postId: string | number }) => {
   const post = useSelector((state: TRootState) => selectPostById(state, postId)) as TPost;
   return (
     <article className="post-excerpt" key={post.id}>
@@ -44,7 +44,8 @@ const PostExcerpt = ({ postId }: { postId: string }) => {
 
 export const PostsList = () => {
   const dispatch = useAppDispatch();
-  const posts = useSelector(selectAllPosts);
+  //const posts = useSelector(selectAllPosts);
+  const orderedPostIds = useSelector(selectPostIds);
 
   const postStatus = useSelector(selectPostStatus);
   const postError  = useSelector(selectPostError);
@@ -59,10 +60,9 @@ export const PostsList = () => {
   if (postStatus === 'loading') {
     content = <div className="loader">Loading...</div>;
   } else if (postStatus === 'succeeded') {
-    const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date));
-
-    content = orderedPosts.map(post =>
-      <PostExcerpt postId={post.id} key={post.id} />
+    //const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date));
+    content = orderedPostIds.map(postId =>
+      <PostExcerpt postId={postId} key={postId} />
     );
   } else if (postStatus === 'failed') {
     content = <div>{postError}</div>;

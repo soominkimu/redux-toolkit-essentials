@@ -5,6 +5,7 @@
  (C) 2020 SPACETIMEQ INC.
 =============================================================================*/
 import { RootState } from './app/store';
+import { EntityState } from '@reduxjs/toolkit';
 
 export type TRootState = RootState;
 
@@ -41,10 +42,12 @@ export type TLoadStatus =
   | 'succeeded'
   | 'failed';
 
-export type TPostState = {
+export type TError = string | undefined | null;
+//export interface TPostState extends EntityState<TPost[]> {
+export interface TPostState {
   posts:     TPost[];
   status:    TLoadStatus;
-  error:     string | undefined | null;
+  error:     TError;
 };
 
 export type TNotiState = {

@@ -15,13 +15,15 @@ import { client } from '../../api/client';
 
 export const fetchNotis = createAsyncThunk<
   TNotiState[]
->('notis/fetchNotis', async (_, { getState }) : Promise<TNotiState[]> => {
-  const allNotis = selectAllNotis(getState() as TRootState);
-  const [latestNoti] = allNotis;
-  const latestTimestamp = latestNoti ? latestNoti.date : '';
-  const response = await client.get(`/fakeApi/notis?since=${latestTimestamp}`);
-  return response.notis as TNotiState[];
-});
+>('notis/fetchNotis',
+  async (_, { getState }) : Promise<TNotiState[]> => {
+    const allNotis = selectAllNotis(getState() as TRootState);
+    const [latestNoti] = allNotis;
+    const latestTimestamp = latestNoti ? latestNoti.date : '';
+    const response = await client.get(`/fakeApi/notis?since=${latestTimestamp}`);
+    return response.notis as TNotiState[];
+  }
+);
 
 const initialState: TNotiState[] = [
 {
@@ -47,7 +49,6 @@ const notisSlice = createSlice({
   initialState,
   reducers: {
     allNotisRead(state, action) {
-      console.log("allNotisRead");
       state.forEach(noti => {
         noti.read = true;
       });
