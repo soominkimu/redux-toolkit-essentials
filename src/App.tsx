@@ -5,7 +5,6 @@
  (C) 2020 SPACETIMEQ INC.
 =============================================================================*/
 import React from 'react';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,6 +19,7 @@ import { PostsList }      from './features/posts/PostsList';
 import { SinglePostPage } from './features/posts/SinglePostPage';
 import { UsersList }      from './features/users/UsersList';
 import { UserPage }       from './features/users/UserPage';
+import { NotisList }      from './features/notis/NotisList';
 
 function App() {
   return (
@@ -41,6 +41,7 @@ function App() {
           <Route exact path="/editPost/:postId" component={EditPostForm} />
           <Route exact path="/users"            component={UsersList} />
           <Route exact path="/users/:userId"    component={UserPage} />
+          <Route exact path="/notis"            component={NotisList} />
           <Redirect to="/" />
         </Switch>
       </div>

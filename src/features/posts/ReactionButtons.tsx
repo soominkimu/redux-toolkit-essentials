@@ -5,11 +5,11 @@
  (C) 2020 SPACETIMEQ INC.
 =============================================================================*/
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../app/store';
 import { reactionAdded } from './postsSlice';
 
 import {
-  TPostState,
+  TPost,
   TReaction,
 } from '../../types.d';
 
@@ -24,11 +24,11 @@ const reactionEmoji: {
 };
 
 type Props = {
-  post: TPostState;
+  post: TPost;
 };
 
 export const ReactionButtons = ({ post }: Props) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   // Object to Array
   const reactionButtons = Object.entries(reactionEmoji).map(([name, emoji]) =>

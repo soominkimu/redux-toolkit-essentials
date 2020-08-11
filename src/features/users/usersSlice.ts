@@ -5,26 +5,37 @@
  (C) 2020 SPACETIMEQ INC.
 =============================================================================*/
 import {
-  createSlice
+  createSlice,
+  createAsyncThunk
 } from '@reduxjs/toolkit';
-import { TRootState } from '../../types.d';
-
-type TUserState = {
-  id:   string;
-  name: string;
-};
+import { client } from '../../api/client';
+import { TRootState, TUserState } from '../../types.d';
 
 const initialState: TUserState[] = [
-  { id: '0', name: 'Soomin K' },
-  { id: '1', name: 'Tianna Jenkins' },
-  { id: '2', name: 'Kevin Grant' },
-  { id: '3', name: 'Madison Price' },
+/*
+  { id: '0', name: '儀同三司母' },
+  { id: '1', name: '右大将道綱母' },
+  { id: '2', name: 'Soomin K' },
+  { id: '3', name: '清少納言' },
+*/
 ];
+
+export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
+  const response = await client.get('/fakeApi/users');
+  return response.users;
+});
 
 const usersSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {}
+  reducers: {},
+  extraReducers: builder => {
+    builder
+    .addCase(fetchUsers.fulfilled, (state, action) => {
+      console.log(action.payload);
+      return action.payload;
+    })
+  }
 });
 
 export default usersSlice.reducer;

@@ -176,6 +176,7 @@ button.reaction-button {
     rgba(128, 0, 255, 0) 42%
   );
   position: relative;
+  animation: load3 1.4s infinite linear;
   transform: translateZ(0);
 }
 
@@ -211,16 +212,16 @@ button.reaction-button {
 
 /* Notifications list */
 
-.notification {
+.noti {
   border: 1px solid #eee;
   padding: 0.5rem;
 }
 
-.notificationsList .notification + .notification {
+.noti .noti + .noti {
   border-top: none;
 }
 
-.notification.new {
+.noti.new {
   background-color: rgba(29, 161, 242, 0.1);
 }
 
@@ -270,3 +271,9 @@ textarea {
   }
 }
 
+#postTitle {
+  width: 30rem;
+}
+#postAuthor {
+  width: 15rem;
+}

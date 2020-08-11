@@ -5,7 +5,8 @@
  (C) 2020 SPACETIMEQ INC.
 =============================================================================*/
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../app/store';
 import { RouteComponentProps, useHistory } from 'react-router-dom';
 
 import {
@@ -22,7 +23,7 @@ export const EditPostForm = ({ match }: RouteComponentProps<{ postId: string }>)
   const [title,   setTitle]   = React.useState(post?.title);
   const [content, setContent] = React.useState(post?.content);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history  = useHistory();
 
   const onSavePostClicked = () => {

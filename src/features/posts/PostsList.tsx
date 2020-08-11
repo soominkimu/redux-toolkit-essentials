@@ -6,22 +6,27 @@
 =============================================================================*/
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../app/store';
 import { Link } from 'react-router-dom';
 
 import { PostAuthor }      from './PostAuthor';
 import { TimeAgo }         from './TimeAgo';
 import { ReactionButtons } from './ReactionButtons';
 
+import { TRootState, TPost } from '../../types.d';
+
 import {
-  selectAllPosts
+  selectAllPosts,
+  selectPostById,
+  selectPostStatus,
+  selectPostError,
+  postUpdated,  // for debugging
+  fetchPosts
 } from './postsSlice';
 
-export const PostsList = () => {
-  const posts = useSelector(selectAllPosts);
-
-  const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date));
-
-  const renderedPosts = orderedPosts.map(post => (
+const PostExcerpt = ({ postId }: { postId: string }) => {
+  const post = useSelector((state: TRootState) => selectPostById(state, postId)) as TPost;
+  return (
     <article className="post-excerpt" key={post.id}>
       <h3>{post.title}</h3>
       <div>
@@ -34,12 +39,43 @@ export const PostsList = () => {
         View Post
       </Link>
     </article>
-  ));
+  );
+}
+
+export const PostsList = () => {
+  const dispatch = useAppDispatch();
+  const posts = useSelector(selectAllPosts);
+
+  const postStatus = useSelector(selectPostStatus);
+  const postError  = useSelector(selectPostError);
+
+  React.useEffect(() => {
+    if (postStatus === 'idle') {
+      dispatch(fetchPosts());
+    }
+  }, [postStatus, dispatch]);
+
+  let content;
+  if (postStatus === 'loading') {
+    content = <div className="loader">Loading...</div>;
+  } else if (postStatus === 'succeeded') {
+    const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date));
+
+    content = orderedPosts.map(post =>
+      <PostExcerpt postId={post.id} key={post.id} />
+    );
+  } else if (postStatus === 'failed') {
+    content = <div>{postError}</div>;
+  }
 
   return (
     <section>
       <h2>Posts</h2>
-      {renderedPosts}
+      {content}
     </section>
   );
 }
+
+console.log(
+  postUpdated({ id: '123', title: 'First Post', content: 'Some text here' })
+);

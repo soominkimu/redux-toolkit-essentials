@@ -1,7 +1,16 @@
 import React from 'react';
+import { useAppDispatch } from './store';
 import { Link } from 'react-router-dom';
 
+import { fetchNotis } from '../features/notis/notisSlice';
+
 export const Navbar = () => {
+  const dispatch = useAppDispatch();
+
+  const fetchNewNotis = () => {
+    dispatch(fetchNotis())
+  }
+
   return (
     <nav>
       <section>
@@ -10,9 +19,9 @@ export const Navbar = () => {
           <div className="navLinks">
             <Link to="/">Posts</Link>
             <Link to="/users">Users</Link>
-            <Link to="/notifications">Notifications</Link>
+            <Link to="/notis">Notifications</Link>
           </div>
-          <button className="button">
+          <button className="button" onClick={fetchNewNotis}>
             Refresh Notifications
           </button>
         </div>

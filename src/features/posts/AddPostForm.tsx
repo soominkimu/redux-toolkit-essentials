@@ -5,29 +5,42 @@
  (C) 2020 SPACETIMEQ INC.
 =============================================================================*/
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { postAdded }      from './postsSlice';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../app/store';
 import { selectAllUsers } from '../users/usersSlice';
+import { unwrapResult }   from '@reduxjs/toolkit';
+import { addNewPost }     from './postsSlice';
 
 export const AddPostForm = () => {
-  const [title,   setTitle]   = React.useState('');
-  const [content, setContent] = React.useState('');
-  const [userId,  setUserId]  = React.useState('');
+  const [title,        setTitle]        = React.useState('');
+  const [content,      setContent]      = React.useState('');
+  const [userId,       setUserId]       = React.useState('');
+  const [addReqStatus, setAddReqStatus] = React.useState('idle');
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const users = useSelector(selectAllUsers);
 
-  const onSavePostClicked = () => {
-    if (title && content) {
-      dispatch( postAdded(title, content, userId) );
-      setTitle('');
-      setContent('');
+  const canSave = [title, content, userId].every(Boolean) && addReqStatus === 'idle';
+
+  const onSavePostClicked = async () => {
+    if (canSave) {
+      try {
+        setAddReqStatus('pending');
+        const resultAction = await dispatch(
+          addNewPost({ title, content, user: userId })
+        );
+        unwrapResult(resultAction);
+        setTitle('');
+        setContent('');
+        setUserId('');
+      } catch (err) {
+        console.error('Failed to save the post: ', err);
+      } finally {
+        setAddReqStatus('idle');
+      }
     }
   }
-
-  const canSave = Boolean(title) && Boolean(content) && Boolean(userId);
 
   const usersOptions = users.map(user => (
     <option key={user.id} value={user.id}>

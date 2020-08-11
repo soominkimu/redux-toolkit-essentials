@@ -8,14 +8,14 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 
-import { TRootState } from '../../types.d';
+import { TRootState, TUserID, TUserState } from '../../types.d';
 import { selectUserById } from '../users/usersSlice';
 import { selectAllPosts } from '../posts/postsSlice';
 
-export const UserPage = ({ match }: RouteComponentProps<{ userId: string }>) => {
+export const UserPage = ({ match }: RouteComponentProps<{ userId: TUserID }>) => {
   const { userId } = match.params;
 
-  const user = useSelector((state: TRootState) => selectUserById(state, userId));
+  const user = useSelector((state: TRootState) => selectUserById(state, userId)) as TUserState;
 
   const postsForUser = useSelector((state: TRootState) => {
     const allPosts = selectAllPosts(state);
@@ -31,7 +31,7 @@ export const UserPage = ({ match }: RouteComponentProps<{ userId: string }>) => 
 
   return (
     <section>
-      <h2>{user?.name}</h2>
+      <h2>{user.name}</h2>
       <ul>{postTitles}</ul>
     </section>
   );
