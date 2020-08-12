@@ -18,8 +18,7 @@ export const AddPostForm = () => {
   const [addReqStatus, setAddReqStatus] = React.useState('idle');
 
   const dispatch = useAppDispatch();
-
-  const users = useSelector(selectAllUsers);
+  const users = useSelector(selectAllUsers);  // state => state.users
 
   const canSave = [title, content, userId].every(Boolean) && addReqStatus === 'idle';
 

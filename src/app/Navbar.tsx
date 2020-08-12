@@ -1,3 +1,9 @@
+/*=============================================================================
+ Navbar.tsx - Navigation Bar
+
+ by Soomin K.
+ (C) 2020 SPACETIMEQ INC.
+=============================================================================*/
 import React from 'react';
 import { useAppDispatch } from './store';
 import { Link } from 'react-router-dom';

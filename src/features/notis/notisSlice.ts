@@ -6,26 +6,34 @@
 =============================================================================*/
 import {
   createSlice,
-  createAsyncThunk
+  createAsyncThunk,
+  createEntityAdapter
 } from '@reduxjs/toolkit';
 
 import { TRootState, TNotiState } from '../../types.d';
 
 import { client } from '../../api/client';
 
+const notisAdapter = createEntityAdapter<TNotiState>({
+  sortComparer: (a, b) => b.date.localeCompare(a.date)
+});
+
 export const fetchNotis = createAsyncThunk<
   TNotiState[]
->('notis/fetchNotis',
-  async (_, { getState }) : Promise<TNotiState[]> => {
+>(
+  'notis/fetchNotis',
+  async (_, { getState }) => {
     const allNotis = selectAllNotis(getState() as TRootState);
     const [latestNoti] = allNotis;
     const latestTimestamp = latestNoti ? latestNoti.date : '';
     const response = await client.get(`/fakeApi/notis?since=${latestTimestamp}`);
-    return response.notis as TNotiState[];
+    return response.notis; // as Promise<TNotiState[]>;
   }
 );
 
-const initialState: TNotiState[] = [
+/*
+const initialState
+[
 {
   id:   '0',
   date: '2020-08-08T15:16:33.188Z',
@@ -43,26 +51,31 @@ const initialState: TNotiState[] = [
   isNew: true
 }
 ];
-
+*/
 const notisSlice = createSlice({
   name: 'notis',
-  initialState,
+  initialState: notisAdapter.getInitialState(),
   reducers: {
     allNotisRead(state, action) {
-      state.forEach(noti => {
-        noti.read = true;
+      // state.forEach(noti => { noti.read = true; });
+      Object.values(state.entities).forEach(noti => {
+        noti!.read = true;
       });
     }
   },
   extraReducers: builder => {
     builder
     .addCase(fetchNotis.fulfilled, (state, action) => {
-      state.forEach(noti => {
-        noti.isNew = !noti.read;
-      });
+      /*
+      state.forEach(noti => { noti.isNew = !noti.read; });
       state.push(...action.payload);
       // Sort with newest first
       state.sort((a, b) => b.date.localeCompare(a.date));
+      */
+      Object.values(state.entities).forEach(noti => {
+        noti!.isNew = !noti!.read;
+      });
+      notisAdapter.upsertMany(state, action.payload);
     })
   }
 });
@@ -71,4 +84,7 @@ export const { allNotisRead } = notisSlice.actions;
 
 export default notisSlice.reducer;
 
-export const selectAllNotis = (state: TRootState) => state.notis;
+//export const selectAllNotis = (state: TRootState) => state.notis;
+export const {
+  selectAll: selectAllNotis
+} = notisAdapter.getSelectors((state: TRootState) => state.notis);

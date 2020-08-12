@@ -1,6 +1,12 @@
 /*=============================================================================
  postsSlice.ts - posts State Slice
 
+ createAsyncThunk<
+  Return type of the payload creator,
+  Firtst argument to the payload creator,
+  Types for ThunkAPI
+ >
+
  by Soomin K.
  (C) 2020 SPACETIMEQ INC.
 =============================================================================*/
@@ -42,21 +48,26 @@ const initialState = postsAdapter.getInitialState({
   error: null as TError  // for type-widening (not to be fixed as null type)
 });
 
-export const fetchPosts = createAsyncThunk(
+export const fetchPosts = createAsyncThunk<
+  TPost[]
+>(
   'posts/fetchPosts',
   async () => {
     const response = await client.get('/fakeApi/posts');
-    return response.posts as Promise<TPost[]>;
+    return response.posts; // as Promise<TPost[]>;
   }
 );
 
 // The payload creator receives the partial '{title, content, user}' object
-export const addNewPost = createAsyncThunk(
+export const addNewPost = createAsyncThunk<
+  TPost,
+  Partial<TPost>
+>(
   'posts/addNewPost',
   async (initialPost: Partial<TPost>) => {
     const response = await client.post('/fakeApi/posts', { post: initialPost });
     // The response includes the complte post object, including unique ID
-    return response.post as Promise<TPost>;
+    return response.post; // as Promise<TPost>;
   }
 );
 

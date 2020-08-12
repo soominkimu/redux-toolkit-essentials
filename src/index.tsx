@@ -1,3 +1,9 @@
+/*=============================================================================
+ Index.tsx - Index
+
+ by Soomin K.
+ (C) 2020 SPACETIMEQ INC.
+=============================================================================*/
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
