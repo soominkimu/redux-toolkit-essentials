@@ -5,7 +5,7 @@
  (C) 2020 SPACETIMEQ INC.
 =============================================================================*/
 import { RootState } from './app/store';
-import { EntityState } from '@reduxjs/toolkit';
+//import { EntityState } from '@reduxjs/toolkit';
 
 export type TRootState = RootState;
 

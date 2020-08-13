@@ -8,8 +8,8 @@
 import { useDispatch } from 'react-redux';
 import {
   configureStore,
-  ThunkAction,
-  Action
+//  ThunkAction,
+//  Action
 } from '@reduxjs/toolkit';
 import postsReducer from '../features/posts/postsSlice';
 import usersReducer from '../features/users/usersSlice';
@@ -24,12 +24,14 @@ export const store = configureStore({
 });
 
 export type RootState = ReturnType<typeof store.getState>;
+/*
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,
   unknown,
   Action<string>
 >;
+*/
 
-export type AppDispatch = typeof store.dispatch;
+type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
