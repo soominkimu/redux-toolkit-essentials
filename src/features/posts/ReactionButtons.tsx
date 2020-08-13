@@ -23,11 +23,7 @@ const reactionEmoji: {
   eyes:     '👀'
 };
 
-type Props = {
-  post: TPost;
-};
-
-export const ReactionButtons = ({ post }: Props) => {
+export const ReactionButtons = ({ post }: { post: TPost }) => {
   const dispatch = useAppDispatch();
 
   // Object to Array
