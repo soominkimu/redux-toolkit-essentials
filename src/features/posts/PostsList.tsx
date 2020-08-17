@@ -57,15 +57,21 @@ export const PostsList = () => {
   }, [postStatus, dispatch]);
 
   let content;
-  if (postStatus === 'loading') {
-    content = <div className="loader">Loading...</div>;
-  } else if (postStatus === 'succeeded') {
-    //const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date));
-    content = orderedPostIds.map(postId =>
-      <PostExcerpt postId={postId} key={postId} />
-    );
-  } else if (postStatus === 'failed') {
-    content = <div>{postError}</div>;
+  switch (postStatus) {
+    case 'loading':
+      content = <div className="loader">Loading...</div>;
+      break;
+    case 'succeeded':
+      //const orderedPosts = posts.slice().sort((a, b) => b.date.localeCompare(a.date));
+      content = orderedPostIds.map(postId =>
+        <PostExcerpt postId={postId} key={postId} />
+      );
+      break;
+    case 'failed':
+      content = <div>{postError}</div>;
+      break;
+    default:
+      console.log("Unknown status!", postStatus);
   }
 
   return (

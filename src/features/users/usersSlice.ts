@@ -27,10 +27,12 @@ const initialState = usersAdapter.getInitialState();
 export const fetchUsers = createAsyncThunk<
   TUserState[]
 >(
-  'users/fetchUsers', async () => {
-  const response = await client.get('/fakeApi/users');
-  return response.users;
-});
+  'users/fetchUsers',
+  async () => {
+    const response = await client.get('/fakeApi/users');
+    return response.users;
+  }
+);
 
 const usersSlice = createSlice({
   name: 'users',
