@@ -1,6 +1,40 @@
 /*=============================================================================
  App.tsx - App mail
 
+src
+├── App.test.tsx
+├── App.tsx
+├── api
+│   ├── client.js
+│   └── server.js
+├── app
+│   ├── Navbar.tsx
+│   ├── localStorage.ts
+│   └── store.ts
+├── features
+│   ├── notis
+│   │   ├── NotisList.tsx
+│   │   └── notisSlice.ts        : notis slice
+│   ├── posts
+│   │   ├── AddPostForm.tsx
+│   │   ├── EditPostForm.tsx
+│   │   ├── PostAuthor.tsx
+│   │   ├── PostsList.tsx
+│   │   ├── ReactionButtons.tsx
+│   │   ├── SinglePostPage.tsx
+│   │   ├── TimeAgo.tsx
+│   │   └── postsSlice.ts        : posts slice
+│   └── users
+│       ├── UserPage.tsx
+│       ├── UsersList.tsx
+│       └── usersSlice.ts        : users slice
+├── index.scss
+├── index.tsx
+├── react-app-env.d.ts
+├── serviceWorker.ts
+├── setupTests.ts
+└── types.d.ts
+
  by Soomin K.
  (C) 2020 SPACETIMEQ INC.
 =============================================================================*/

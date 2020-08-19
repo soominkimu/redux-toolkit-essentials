@@ -4,7 +4,6 @@
  by Soomin K.
  (C) 2020 SPACETIMEQ INC.
 =============================================================================*/
-
 import { useDispatch } from 'react-redux';
 import {
   configureStore,

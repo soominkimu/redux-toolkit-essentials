@@ -14,7 +14,7 @@ export const Navbar = () => {
   const dispatch = useAppDispatch();
 
   const fetchNewNotis = () => {
-    dispatch(fetchNotis())
+    dispatch(fetchNotis());
   }
 
   return (
