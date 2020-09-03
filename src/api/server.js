@@ -183,6 +183,6 @@ new Server({
     comment: IdSerializer,
   },
   seeds(server) {
-    server.createList('user', 3)
+    server.createList('user', 13)
   },
 })

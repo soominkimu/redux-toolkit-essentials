@@ -70,6 +70,9 @@ export const PostsList = () => {
     case 'failed':
       content = <div>{postError}</div>;
       break;
+    case 'idle':
+      content = <div>idle...</div>;
+      break;
     default:
       console.log("Unknown status!", postStatus);
   }

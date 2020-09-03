@@ -18,8 +18,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 p {
@@ -34,7 +33,7 @@ nav {
   background: var(--redux-color);
   section {
     width: 100%;
-    color: white;
+    color: yellow;
   }
   a {
     &, &:active {
