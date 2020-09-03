@@ -8,7 +8,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 
-import { TRootState, TUserID, TUserState } from '../../types.d';
+import {
+  TRootState,
+  TUserID,
+  TUserState
+} from '../../types.d';
 import { selectUserById }    from '../users/usersSlice';
 import { selectPostsByUser } from '../posts/postsSlice';
 

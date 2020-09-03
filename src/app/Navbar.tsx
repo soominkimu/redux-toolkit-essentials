@@ -13,10 +13,6 @@ import { fetchNotis } from '../features/notis/notisSlice';
 export const Navbar = () => {
   const dispatch = useAppDispatch();
 
-  const fetchNewNotis = () => {
-    dispatch(fetchNotis());
-  }
-
   return (
     <nav>
       <section>
@@ -27,7 +23,7 @@ export const Navbar = () => {
             <Link to="/users">Users</Link>
             <Link to="/notis">Notifications</Link>
           </div>
-          <button className="button" onClick={fetchNewNotis}>
+            <button className="button" onClick={() => dispatch(fetchNotis())}>
             Refresh Notifications
           </button>
         </div>

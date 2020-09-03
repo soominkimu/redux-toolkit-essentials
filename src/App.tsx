@@ -40,10 +40,10 @@ src
 =============================================================================*/
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Switch,
   Route,
-  Redirect
+  Redirect,
 } from 'react-router-dom';
 
 import { Navbar }         from './app/Navbar';
@@ -56,14 +56,13 @@ import { UserPage }       from './features/users/UserPage';
 import { NotisList }      from './features/notis/NotisList';
 
 function App() {
+
   return (
-    <Router>
+    <BrowserRouter>
       <Navbar />
       <div className="App">
         <Switch>
-          <Route
-            exact
-            path="/"
+          <Route exact path="/"
             render={() => (
               <>
                 <AddPostForm />
@@ -79,7 +78,7 @@ function App() {
           <Redirect to="/" />
         </Switch>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
