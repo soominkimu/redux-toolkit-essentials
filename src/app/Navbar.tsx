@@ -16,7 +16,7 @@ export const Navbar = () => {
   return (
     <nav>
       <section>
-        <h1>RTK Boilerplate</h1>
+        <h1>SpacetimeQ Redux Toolkit+TypeScript Boilerplate</h1>
         <div className="navContent">
           <div className="navLinks">
             <Link to="/">Posts</Link>
