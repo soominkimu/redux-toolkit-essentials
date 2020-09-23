@@ -7,8 +7,7 @@
   Types for ThunkAPI
  >
 
- by Soomin K.
- (C) 2020 SPACETIMEQ INC.
+ (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
 import {
   createSlice,
@@ -96,14 +95,16 @@ const postsSlice = createSlice({
     */
     reactionAdded(state, action) {
       const { postId, reaction } = action.payload;
-      const existingPost = state.entities[postId] as TPost;  // state.posts.find(post => post.id === postId);
+      // state.posts.find(post => post.id === postId);
+      const existingPost = state.entities[postId] as TPost;
       if (existingPost) {
         existingPost.reactions[reaction as TReaction]++;
       }
     },
     postUpdated(state, action) {
       const { id, title, content } = action.payload;
-      const existingPost = state.entities[id] as TPost;  // state.posts.find(post => post.id === id);
+      // state.posts.find(post => post.id === id);
+      const existingPost = state.entities[id] as TPost;
       if (existingPost) {
         existingPost.title   = title;
         existingPost.content = content;
@@ -112,7 +113,7 @@ const postsSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-    .addCase(fetchPosts.pending, (state, action) => {
+    .addCase(fetchPosts.pending, (state, _action) => {
       state.status = 'loading';
     })
     .addCase(fetchPosts.fulfilled, (state, action) => {
@@ -153,6 +154,6 @@ export const {
 export const selectPostStatus = (state: TRootState) => state.posts.status;
 export const selectPostError  = (state: TRootState) => state.posts.error;
 export const selectPostsByUser = createSelector(
-  [selectAllPosts, (state: TRootState, userId: string) => userId],
+  [selectAllPosts, (_state: TRootState, userId: string) => userId],
   (posts, userId) => posts.filter(post => post.user === userId)
 );

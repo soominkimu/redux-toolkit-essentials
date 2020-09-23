@@ -1,7 +1,7 @@
 /*=============================================================================
- App.tsx - App mail
+ App.tsx - App main
 
-src
+src (tree)
 ├── App.test.tsx
 ├── App.tsx
 ├── api
@@ -35,8 +35,7 @@ src
 ├── setupTests.ts
 └── types.d.ts
 
- by Soomin K.
- (C) 2020 SPACETIMEQ INC.
+ (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
 import React from 'react';
 import {

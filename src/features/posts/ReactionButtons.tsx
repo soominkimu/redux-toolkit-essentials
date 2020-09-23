@@ -1,8 +1,7 @@
 /*=============================================================================
  ReactionButtons.tsx - Reaction Buttons
 
- by Soomin K.
- (C) 2020 SPACETIMEQ INC.
+ (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
 import React from 'react';
 import { useAppDispatch } from '../../app/store';

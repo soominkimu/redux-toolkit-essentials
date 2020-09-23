@@ -1,8 +1,7 @@
 /*=============================================================================
  PostsList.tsx - Posts List
 
- by Soomin K.
- (C) 2020 SPACETIMEQ INC.
+ (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -46,9 +45,8 @@ export const PostsList = () => {
   const dispatch = useAppDispatch();
   //const posts = useSelector(selectAllPosts);
   const orderedPostIds = useSelector(selectPostIds);
-
-  const postStatus = useSelector(selectPostStatus);
-  const postError  = useSelector(selectPostError);
+  const postStatus     = useSelector(selectPostStatus);
+  const postError      = useSelector(selectPostError);
 
   React.useEffect(() => {
     if (postStatus === 'idle') {

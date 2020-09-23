@@ -1,8 +1,7 @@
 /*=============================================================================
  localStorage.ts - persistent state using the Web Local Storage
 
- by Soomin K.
- (C) 2020 SPACETIMEQ INC.
+ (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
 
 export const loadPersistState = () => {

@@ -1,8 +1,7 @@
 /*=============================================================================
  notisSlice.ts - Notifications State Slice
 
- by Soomin K.
- (C) 2020 SPACETIMEQ INC.
+ (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
 import {
   createSlice,

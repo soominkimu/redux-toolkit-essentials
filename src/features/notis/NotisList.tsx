@@ -1,8 +1,7 @@
 /*=============================================================================
  NotisList.tsx - Notifications List
 
- by Soomin K.
- (C) 2020 SPACETIMEQ INC.
+ (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
 import React from 'react';
 import { useSelector } from 'react-redux';

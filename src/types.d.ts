@@ -1,8 +1,7 @@
 /*=============================================================================
  types.d.ts - Types Declarations
 
- by Soomin K.
- (C) 2020 SPACETIMEQ INC.
+ (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
 import { RootState } from './app/store';
 //import { EntityState } from '@reduxjs/toolkit';

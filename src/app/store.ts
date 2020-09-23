@@ -1,8 +1,7 @@
 /*=============================================================================
  store.ts - Store Root
 
- by Soomin K.
- (C) 2020 SPACETIMEQ INC.
+ (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
 import { useDispatch } from 'react-redux';
 import {
