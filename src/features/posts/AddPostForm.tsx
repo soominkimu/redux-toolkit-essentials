@@ -4,7 +4,7 @@
  (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector }    from 'react-redux';
 import { useAppDispatch } from '../../app/store';
 import { selectAllUsers } from '../users/usersSlice';
 import { unwrapResult }   from '@reduxjs/toolkit';

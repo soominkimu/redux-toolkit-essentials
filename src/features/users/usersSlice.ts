@@ -13,8 +13,8 @@ import { TRootState, TUserState } from '../../types.d';
 
 const usersAdapter = createEntityAdapter<TUserState>();
 
-const initialState = usersAdapter.getInitialState();
 /*
+const initialState =
 [
   { id: '0', name: '儀同三司母' },
   { id: '1', name: '右大将道綱母' },
@@ -35,7 +35,7 @@ export const fetchUsers = createAsyncThunk<
 
 const usersSlice = createSlice({
   name: 'users',
-  initialState,
+  initialState: usersAdapter.getInitialState(),
   reducers: {},
   extraReducers: builder => {
     builder

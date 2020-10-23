@@ -31,8 +31,8 @@ const postsAdapter = createEntityAdapter<TPost>({
 });
 
 const initialState = postsAdapter.getInitialState({
-  posts: [
 /*
+  posts: [
   { id: '1', date: '2020-08-21T15:16:33.188Z', title: 'わすれじの ゆくすゑ(え)までは かたければ',
     content: '忘れじの 行く末までは 難ければ 今日を限りの 命ともがな',    user: '0',
     reactions: {thumbsUp: 0, hooray: 0, heart: 0, rocket: 0, eyes: 0}
@@ -41,8 +41,8 @@ const initialState = postsAdapter.getInitialState({
     content: '歎きつつ ひとり寝る夜の 明くる間は いかに久しき ものとかは知る', user: '1' ,
     reactions: {thumbsUp: 0, hooray: 0, heart: 0, rocket: 0, eyes: 0}
   }
-*/
   ],
+*/
   status: 'idle',
   error: null as TError  // for type-widening (not to be fixed as null type)
 });
