@@ -8,12 +8,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 
-import { selectPostById } from './postsSlice';
-import { TRootState } from '../../types.d';
-
-import { PostAuthor } from './PostAuthor';
-import { TimeAgo }    from './TimeAgo';
-import { ReactionButtons } from './ReactionButtons';
+import { TRootState } from 'types.d';
+import { selectPostById }  from 'features/posts/postsSlice';
+import { PostAuthor }      from 'features/posts/PostAuthor';
+import { TimeAgo }         from 'features/posts/TimeAgo';
+import { ReactionButtons } from 'features/posts/ReactionButtons';
 
 export const SinglePostPage = ({ match }: RouteComponentProps<{ postId: string }>) => {
   const { postId } = match.params;

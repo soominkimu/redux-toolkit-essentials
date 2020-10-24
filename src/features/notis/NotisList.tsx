@@ -5,14 +5,14 @@
 =============================================================================*/
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from '../../app/store';
+import { useAppDispatch } from 'app/store';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 
-import { selectAllUsers } from '../users/usersSlice';
+import { selectAllUsers } from 'features/users/usersSlice';
 import {
   selectAllNotis,
   allNotisRead
-} from './notisSlice';
+} from 'features/notis/notisSlice';
 
 export const NotisList = () => {
   const dispatch = useAppDispatch();

@@ -9,9 +9,9 @@ import {
   createEntityAdapter
 } from '@reduxjs/toolkit';
 
-import { TRootState, TNotiState } from '../../types.d';
+import { TRootState, TNotiState } from 'types.d';
 
-import { client } from '../../api/client';
+import { client } from 'api/client';
 
 const notisAdapter = createEntityAdapter<TNotiState>({
   sortComparer: (a, b) => b.date.localeCompare(a.date)

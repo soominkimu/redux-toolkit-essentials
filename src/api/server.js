@@ -112,7 +112,7 @@ new Server({
       // Create N random notifications. We won't bother saving these
       // in the DB - just generate a new batch and return them.
       const notis = [...Array(numNotifications)].map(() => {
-        const user = randomFromArray(schema.db.users);
+        const user     = randomFromArray(schema.db.users);
         const template = randomFromArray(notiTemplates);
         return {
           id:      nanoid(),

@@ -5,14 +5,14 @@
 =============================================================================*/
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App';
-import { store } from './app/store';
+import 'index.scss';
+import App from 'App';
+import { store } from 'app/store';
 import { Provider } from 'react-redux';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from 'serviceWorker';
 
-import { fetchUsers } from './features/users/usersSlice';
-import './api/server';  // yarn add faker miragejs seedrandom txtgen
+import { fetchUsers } from 'features/users/usersSlice';
+import 'api/server';  // yarn add faker miragejs seedrandom txtgen
 
 store.dispatch(fetchUsers());
 

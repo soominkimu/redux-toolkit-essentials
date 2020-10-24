@@ -5,14 +5,14 @@
 =============================================================================*/
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from '../../app/store';
+import { useAppDispatch } from 'app/store';
 import { RouteComponentProps, useHistory } from 'react-router-dom';
 
 import {
   postUpdated,
   selectPostById
-} from './postsSlice';
-import { TRootState } from '../../types.d';
+} from 'features/posts/postsSlice';
+import { TRootState } from 'types.d';
 
 export const EditPostForm = ({ match }: RouteComponentProps<{ postId: string }>) => {
   const { postId } = match.params;

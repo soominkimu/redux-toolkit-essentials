@@ -4,8 +4,8 @@
  (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
 import React from 'react';
-import { useAppDispatch } from '../../app/store';
-import { reactionAdded } from './postsSlice';
+import { useAppDispatch } from 'app/store';
+import { reactionAdded } from 'features/posts/postsSlice';
 
 import {
   TPost,

@@ -5,10 +5,10 @@
 =============================================================================*/
 import React from 'react';
 import { useSelector }    from 'react-redux';
-import { useAppDispatch } from '../../app/store';
-import { selectAllUsers } from '../users/usersSlice';
+import { useAppDispatch } from 'app/store';
 import { unwrapResult }   from '@reduxjs/toolkit';
-import { addNewPost }     from './postsSlice';
+import { selectAllUsers } from 'features/users/usersSlice';
+import { addNewPost }     from 'features/posts/postsSlice';
 
 export const AddPostForm = () => {
   const [title,        setTitle]        = React.useState('');

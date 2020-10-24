@@ -4,10 +4,10 @@
  (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
 import React from 'react';
-import { useAppDispatch } from './store';
+import { useAppDispatch } from 'app/store';
 import { Link } from 'react-router-dom';
 
-import { fetchNotis } from '../features/notis/notisSlice';
+import { fetchNotis } from 'features/notis/notisSlice';
 
 export const Navbar = () => {
   const dispatch = useAppDispatch();

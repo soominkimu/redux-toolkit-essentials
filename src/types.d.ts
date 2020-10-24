@@ -3,7 +3,7 @@
 
  (C) 2020 Soomin K., SpacetimeQ INC.
 =============================================================================*/
-import { RootState } from './app/store';
+import { RootState } from 'app/store';
 //import { EntityState } from '@reduxjs/toolkit';
 
 export type TRootState = RootState;

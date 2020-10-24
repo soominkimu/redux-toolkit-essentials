@@ -17,14 +17,14 @@ import {
   createSelector,
   createEntityAdapter
 } from '@reduxjs/toolkit';
-import { client } from '../../api/client';
+import { client } from 'api/client';
 
 import {
   TError,
   TPost,
   TRootState,
   TReaction,
-} from '../../types.d';
+} from 'types.d';
 
 const postsAdapter = createEntityAdapter<TPost>({
   sortComparer: (a, b) => b.date.localeCompare(a.date)

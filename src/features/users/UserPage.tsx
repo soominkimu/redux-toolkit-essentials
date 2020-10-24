@@ -11,9 +11,9 @@ import {
   TRootState,
   TUserID,
   TUserState
-} from '../../types.d';
-import { selectUserById }    from '../users/usersSlice';
-import { selectPostsByUser } from '../posts/postsSlice';
+} from 'types.d';
+import { selectUserById }    from 'features/users/usersSlice';
+import { selectPostsByUser } from 'features/posts/postsSlice';
 
 export const UserPage = ({ match }: RouteComponentProps<{ userId: TUserID }>) => {
   const { userId } = match.params;

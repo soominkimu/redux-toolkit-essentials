@@ -5,14 +5,14 @@
 =============================================================================*/
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from '../../app/store';
+import { useAppDispatch } from 'app/store';
 import { Link } from 'react-router-dom';
 
-import { PostAuthor }      from './PostAuthor';
-import { TimeAgo }         from './TimeAgo';
-import { ReactionButtons } from './ReactionButtons';
+import { PostAuthor }      from 'features/posts/PostAuthor';
+import { TimeAgo }         from 'features/posts/TimeAgo';
+import { ReactionButtons } from 'features/posts/ReactionButtons';
 
-import { TRootState, TPost } from '../../types.d';
+import { TRootState, TPost } from 'types.d';
 
 import {
   selectPostIds,

@@ -8,8 +8,8 @@ import {
   createAsyncThunk,
   createEntityAdapter
 } from '@reduxjs/toolkit';
-import { client } from '../../api/client';
-import { TRootState, TUserState } from '../../types.d';
+import { client } from 'api/client';
+import { TRootState, TUserState } from 'types.d';
 
 const usersAdapter = createEntityAdapter<TUserState>();
 

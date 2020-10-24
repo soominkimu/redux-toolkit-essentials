@@ -6,7 +6,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectAllUsers } from './usersSlice';
+import { selectAllUsers } from 'features/users/usersSlice';
 
 export const UsersList = () => {
   const users = useSelector(selectAllUsers);

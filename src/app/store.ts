@@ -9,9 +9,9 @@ import {
 //  ThunkAction,
 //  Action
 } from '@reduxjs/toolkit';
-import postsReducer from '../features/posts/postsSlice';
-import usersReducer from '../features/users/usersSlice';
-import notisReducer from '../features/notis/notisSlice';
+import postsReducer from 'features/posts/postsSlice';
+import usersReducer from 'features/users/usersSlice';
+import notisReducer from 'features/notis/notisSlice';
 
 /*
 import {
@@ -43,5 +43,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 >;
 */
 
-type AppDispatch = typeof store.dispatch;
-export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppDispatch = () => useDispatch<typeof store.dispatch>();

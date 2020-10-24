@@ -45,14 +45,14 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import { Navbar }         from './app/Navbar';
-import { AddPostForm }    from './features/posts/AddPostForm';
-import { EditPostForm }   from './features/posts/EditPostForm';
-import { PostsList }      from './features/posts/PostsList';
-import { SinglePostPage } from './features/posts/SinglePostPage';
-import { UsersList }      from './features/users/UsersList';
-import { UserPage }       from './features/users/UserPage';
-import { NotisList }      from './features/notis/NotisList';
+import { Navbar }         from 'app/Navbar';
+import { AddPostForm }    from 'features/posts/AddPostForm';
+import { EditPostForm }   from 'features/posts/EditPostForm';
+import { PostsList }      from 'features/posts/PostsList';
+import { SinglePostPage } from 'features/posts/SinglePostPage';
+import { UsersList }      from 'features/users/UsersList';
+import { UserPage }       from 'features/users/UserPage';
+import { NotisList }      from 'features/notis/NotisList';
 
 function App() {
 
