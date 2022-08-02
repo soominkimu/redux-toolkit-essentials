@@ -6,7 +6,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'app/store';
-import { RouteComponentProps, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import {
   postUpdated,
@@ -14,8 +14,9 @@ import {
 } from 'features/posts/postsSlice';
 import { TRootState } from 'types.d';
 
-export const EditPostForm = ({ match }: RouteComponentProps<{ postId: string }>) => {
-  const { postId } = match.params;
+export const EditPostForm = () => {
+  const params = useParams<{ postId: string; }>();
+  const { postId = '' } = params;
 
   const post = useSelector((state: TRootState) => selectPostById(state, postId));
 
@@ -23,12 +24,12 @@ export const EditPostForm = ({ match }: RouteComponentProps<{ postId: string }>)
   const [content, setContent] = React.useState(post?.content);
 
   const dispatch = useAppDispatch();
-  const history  = useHistory();
+  const navigate = useNavigate();
 
   const onSavePostClicked = () => {
     if (title && content) {
       dispatch( postUpdated({ id: postId, title, content }) );
-      history.push(`/posts/${postId}`);
+      navigate(`/posts/${postId}`);
     }
   }
 

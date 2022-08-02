@@ -22,7 +22,7 @@ export const Navbar = () => {
             <Link to="/users">Users</Link>
             <Link to="/notis">Notifications</Link>
           </div>
-            <button className="button" onClick={() => dispatch(fetchNotis())}>
+          <button className="button" onClick={() => dispatch(fetchNotis())}>
             Refresh Notifications
           </button>
         </div>

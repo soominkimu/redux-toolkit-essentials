@@ -5,18 +5,18 @@
 =============================================================================*/
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import {
   TRootState,
-  TUserID,
   TUserState
 } from 'types.d';
 import { selectUserById }    from 'features/users/usersSlice';
 import { selectPostsByUser } from 'features/posts/postsSlice';
 
-export const UserPage = ({ match }: RouteComponentProps<{ userId: TUserID }>) => {
-  const { userId } = match.params;
+export const UserPage = () => {
+  const params = useParams<{ userId: string; }>();
+  const { userId = '' } = params;
 
   const user = useSelector((state: TRootState) => selectUserById(state, userId)) as TUserState;
 

@@ -40,9 +40,9 @@ src (tree)
 import React from 'react';
 import {
   BrowserRouter,
-  Switch,
+  Routes,
   Route,
-  Redirect,
+  Navigate,
 } from 'react-router-dom';
 
 import { Navbar }         from 'app/Navbar';
@@ -60,22 +60,21 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <div className="App">
-        <Switch>
-          <Route exact path="/"
-            render={() => (
-              <>
-                <AddPostForm />
-                <PostsList />
-              </>
-            )}
+        <Routes>
+          <Route path="/"
+            element={
+            <>
+              <AddPostForm />
+              <PostsList />
+            </>}
           />
-          <Route exact path="/posts/:postId"    component={SinglePostPage} />
-          <Route exact path="/editPost/:postId" component={EditPostForm} />
-          <Route exact path="/users"            component={UsersList} />
-          <Route exact path="/users/:userId"    component={UserPage} />
-          <Route exact path="/notis"            component={NotisList} />
-          <Redirect to="/" />
-        </Switch>
+          <Route path="/posts/:postId"    element={<SinglePostPage />} />
+          <Route path="/editPost/:postId" element={<EditPostForm />} />
+          <Route path="/users"            element={<UsersList />} />
+          <Route path="/users/:userId"    element={<UserPage />} />
+          <Route path="/notis"            element={<NotisList />} />
+          <Route path="/"                 element={<Navigate replace to="/" />} />
+        </Routes>
       </div>
     </BrowserRouter>
   );
