@@ -8,9 +8,7 @@ import {
   createAsyncThunk,
   createEntityAdapter
 } from '@reduxjs/toolkit';
-
-import { TRootState, TNotiState } from 'types.d';
-
+import type { RootState } from 'app/store';
 import { client } from 'api/client';
 
 const notisAdapter = createEntityAdapter<TNotiState>({
@@ -22,7 +20,7 @@ export const fetchNotis = createAsyncThunk<
 >(
   'notis/fetchNotis',
   async (_, { getState }) => {
-    const allNotis = selectAllNotis(getState() as TRootState);
+    const allNotis = selectAllNotis(getState() as RootState);
     const [latestNoti] = allNotis;
     const latestTimestamp = latestNoti ? latestNoti.date : '';
     const response = await client.get(`/fakeApi/notis?since=${latestTimestamp}`);
@@ -86,4 +84,4 @@ export default notisSlice.reducer;
 //export const selectAllNotis = (state: TRootState) => state.notis;
 export const {
   selectAll: selectAllNotis
-} = notisAdapter.getSelectors((state: TRootState) => state.notis);
+} = notisAdapter.getSelectors((state: RootState) => state.notis);

@@ -12,13 +12,13 @@ import {
   postUpdated,
   selectPostById
 } from 'features/posts/postsSlice';
-import { TRootState } from 'types.d';
+import type { RootState } from 'app/store';
 
 export const EditPostForm = () => {
   const params = useParams<{ postId: string; }>();
   const { postId = '' } = params;
 
-  const post = useSelector((state: TRootState) => selectPostById(state, postId));
+  const post = useSelector((state: RootState) => selectPostById(state, postId));
 
   const [title,   setTitle]   = React.useState(post?.title);
   const [content, setContent] = React.useState(post?.content);

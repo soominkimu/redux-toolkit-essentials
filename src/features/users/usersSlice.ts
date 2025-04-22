@@ -9,7 +9,7 @@ import {
   createEntityAdapter
 } from '@reduxjs/toolkit';
 import { client } from 'api/client';
-import { TRootState, TUserState } from 'types.d';
+import type { RootState } from 'app/store';
 
 const usersAdapter = createEntityAdapter<TUserState>();
 
@@ -52,11 +52,11 @@ const usersSlice = createSlice({
 export default usersSlice.reducer;
 
 /*
-export const selectAllUsers = (state: TRootState) => state.users;
-export const selectUserById = (state: TRootState, userId: string) =>
+export const selectAllUsers = (state: RootState) => state.users;
+export const selectUserById = (state: RootState, userId: string) =>
   state.users.find(user => user.id === userId);
 */
 export const {
   selectAll:  selectAllUsers,
   selectById: selectUserById
-} = usersAdapter.getSelectors((state: TRootState) => state.users);
+} = usersAdapter.getSelectors((state: RootState) => state.users);

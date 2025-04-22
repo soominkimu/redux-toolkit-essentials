@@ -12,7 +12,7 @@ import { PostAuthor }      from 'features/posts/PostAuthor';
 import { TimeAgo }         from 'features/posts/TimeAgo';
 import { ReactionButtons } from 'features/posts/ReactionButtons';
 
-import { TRootState, TPost } from 'types.d';
+import type { RootState } from 'app/store';
 
 import {
   selectPostIds,
@@ -24,7 +24,7 @@ import {
 } from './postsSlice';
 
 const PostExcerpt = ({ postId }: { postId: string | number }) => {
-  const post = useSelector((state: TRootState) => selectPostById(state, postId)) as TPost;
+  const post = useSelector((state: RootState) => selectPostById(state, postId)) as TPost;
   return (
     <article className="post-excerpt" key={post.id}>
       <h3>{post.title}</h3>
@@ -83,6 +83,4 @@ export const PostsList = () => {
   );
 }
 
-console.log(
-  postUpdated({ id: '123', title: 'First Post', content: 'Some text here' })
-);
+console.log( postUpdated({ id: '123', title: 'First Post', content: 'Some text here' }));

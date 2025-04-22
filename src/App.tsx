@@ -55,6 +55,7 @@ import { UserPage }       from 'features/users/UserPage';
 import { NotisList }      from 'features/notis/NotisList';
 
 function App() {
+  console.log("App()");
 
   return (
     <BrowserRouter>

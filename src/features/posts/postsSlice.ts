@@ -18,13 +18,7 @@ import {
   createEntityAdapter
 } from '@reduxjs/toolkit';
 import { client } from 'api/client';
-
-import {
-  TError,
-  TPost,
-  TRootState,
-  TReaction,
-} from 'types.d';
+import type { RootState } from 'app/store';
 
 const postsAdapter = createEntityAdapter<TPost>({
   sortComparer: (a, b) => b.date.localeCompare(a.date)
@@ -150,10 +144,10 @@ export const {
   selectAll:  selectAllPosts,
   selectById: selectPostById,
   selectIds:  selectPostIds
-} = postsAdapter.getSelectors((state: TRootState) => state.posts);
-export const selectPostStatus = (state: TRootState) => state.posts.status;
-export const selectPostError  = (state: TRootState) => state.posts.error;
+} = postsAdapter.getSelectors((state: RootState) => state.posts);
+export const selectPostStatus = (state: RootState) => state.posts.status;
+export const selectPostError  = (state: RootState) => state.posts.error;
 export const selectPostsByUser = createSelector(
-  [selectAllPosts, (_state: TRootState, userId: string) => userId],
+  [selectAllPosts, (_state: RootState, userId: string) => userId],
   (posts, userId) => posts.filter(post => post.user === userId)
 );

@@ -7,11 +7,6 @@ import React from 'react';
 import { useAppDispatch } from 'app/store';
 import { reactionAdded } from 'features/posts/postsSlice';
 
-import {
-  TPost,
-  TReaction,
-} from '../../types.d';
-
 const reactionEmoji: {
   readonly [name in TReaction]: string  // index signature
 } = {

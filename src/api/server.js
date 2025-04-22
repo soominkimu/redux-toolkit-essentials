@@ -10,7 +10,7 @@ import {
 
 import { nanoid } from '@reduxjs/toolkit';
 
-import faker from 'faker';
+import { faker } from '@faker-js/faker';
 import { sentence, paragraph, article, setRandom } from 'txtgen';
 import { parseISO } from 'date-fns';
 import seedrandom from 'seedrandom';
@@ -145,7 +145,7 @@ new Server({
       id()        { return nanoid() },
       firstName() { return faker.name.firstName() },
       lastName()  { return faker.name.lastName() },
-      name()      { return faker.name.findName(this.firstName, this.lastName) },
+      name()      { return faker.name.fullName() },
       username()  { return faker.internet.userName(this.firstName, this.lastName) },
       afterCreate(user, server) {
         server.createList('post', 3, { user })
